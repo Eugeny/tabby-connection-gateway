@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 from setuptools import setup
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
 requirements = ['websockets>=9.1']
 
 setup(
     name='tabby-connection-gateway',
-    version='0.1.3',
+    version='0.2.0',
     author='Eugene Pankov',
     author_email='e@ajenti.org',
     python_requires='>=3.6',
@@ -28,6 +28,7 @@ setup(
     install_requires=requirements,
     license='MIT license',
     long_description=readme,
+    long_description_content_type='text/markdown',
     include_package_data=True,
     keywords='tabby',
     packages=['tabby_connection_gateway'],
