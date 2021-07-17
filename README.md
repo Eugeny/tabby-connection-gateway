@@ -34,10 +34,10 @@ You could theoretically add `--ca ca.pem` to enable client certificate auth, but
 ### Running without SSL
 
 ```sh
-TABBY_AUTH_TOKEN="123..." tabby-connection-gateway --host 0.0.0.0 --port 443 --token-auth
+TABBY_AUTH_TOKEN="123..." tabby-connection-gateway --host 0.0.0.0 --port 1234 --token-auth
 ```
 
-Connection gateway URL for Tabby settings: `ws://<host>`
+Connection gateway URL for Tabby settings: `ws://<host>:1234`
 
 ### Sample systemd unit
 
