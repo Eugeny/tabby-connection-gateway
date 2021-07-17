@@ -15,7 +15,7 @@ pip3 install tabby-connection-gateway
 
 ## Usage
 
-TCW runs one Websocket listener for the incoming connections and one optional Websocket listener for management requests.
+TCG runs one Websocket listener for the incoming connections and one optional Websocket listener for management requests.
 
 The management/admin listener is only used on Tabby Web's own managed gateways to authenticate new connections. For your local instance, you need to generate your own secret token and pass it via the `TABBY_AUTH_TOKEN` environment variable.
 
