@@ -12,14 +12,6 @@ setup(
     author='Eugene Pankov',
     author_email='e@ajenti.org',
     python_requires='>=3.6',
-    classifiers=[
-        'Development Status :: 4 - Beta',
-        'License :: OSI Approved :: MIT License',
-        'Natural Language :: English',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-    ],
     entry_points={
         'console_scripts': [
             'tabby-connection-gateway=tabby_connection_gateway.cli:main',
