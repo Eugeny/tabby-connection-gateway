@@ -7,9 +7,16 @@ You can host one yourself to prevent the connection traffic from going through t
 
 Once started, you'll just need to enter your gateway URL and a secret token in the Tabby Web settings, and all future connections will go straight through your own gateway.
 
-## Installation
+## Getting started (Docker)
 
+```bash
+docker pull ghcr.io/eugeny/tabby-connection-gateway:master
+docker run -e TABBY_AUTH_TOKEN=secret123 ghcr.io/eugeny/tabby-connection-gateway:master --token-auth
 ```
+
+## Getting started (native)
+
+```bash
 pip3 install tabby-connection-gateway
 ```
 
@@ -71,6 +78,7 @@ optional arguments:
   --private-key PATH
   --ca PATH             path to the CA certificate. Enables SSL client auth
                         (default: None)
+  --no-auth             disables auth completely
   --token-auth          enables token based auth using the token from the
                         TABBY_AUTH_TOKEN env var (default: False)
   --admin-host ADMIN_HOST
