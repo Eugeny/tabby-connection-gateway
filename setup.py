@@ -8,7 +8,7 @@ requirements = ['websockets>=9.1']
 
 setup(
     name='tabby-connection-gateway',
-    version='0.2.2',
+    version='0.3.0',
     author='Eugene Pankov',
     author_email='e@ajenti.org',
     python_requires='>=3.6',
