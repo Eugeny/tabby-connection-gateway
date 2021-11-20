@@ -29,6 +29,11 @@ async def _main():
         help='enables token based auth using the token from the TABBY_AUTH_TOKEN env var',
     )
     parser.add_argument(
+        '--no-auth',
+        action='store_true',
+        help='disables authentication completely. WARNING: this means your gateway is free-for-all!',
+    )
+    parser.add_argument(
         '--admin-host',
         default='127.0.0.1',
         help='address to listen on for management requests',
@@ -56,6 +61,9 @@ async def _main():
 
     if args.token_auth and not os.getenv('TABBY_AUTH_TOKEN'):
         parser.error('TABBY_AUTH_TOKEN must be provided when using --token-auth')
+
+    if not args.token_auth and not args.no_auth and not args.admin_port:
+        parser.error('either --no-auth, --token-auth or --admin-port must be provided')
 
     if args.admin_port:
         if (
@@ -99,6 +107,7 @@ async def _main():
         port=args.port,
         ssl=ssl_context,
         auth_token=os.getenv('TABBY_AUTH_TOKEN'),
+        disable_auth=args.no_auth,
     ).start()
 
     if args.admin_port:

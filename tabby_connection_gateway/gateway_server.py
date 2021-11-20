@@ -26,27 +26,28 @@ class GatewayWorker(BaseWorker):
             {
                 '_': 'hello',
                 'version': 1,
-                'auth_required': True,
+                'auth_required': not self.server.disable_auth,
             }
         )
         msg = await self.recv_service_message()
         if msg.get('_') != 'hello':
             return await self.fatal('expected-hello')
 
-        if not msg.get('auth_token'):
-            return await self.fatal('expected-auth-token')
+        if not self.server.disable_auth:
+            if not msg.get('auth_token'):
+                return await self.fatal('expected-auth-token')
 
-        valid_tokens = list(self.server.authorized_tokens)
-        if self.server.permanent_auth_token:
-            valid_tokens.append(self.server.permanent_auth_token)
+            valid_tokens = list(self.server.authorized_tokens)
+            if self.server.permanent_auth_token:
+                valid_tokens.append(self.server.permanent_auth_token)
 
-        for token in valid_tokens:
-            if hmac.compare_digest(msg['auth_token'], token):
-                if token in self.server.authorized_tokens:
-                    self.server.authorized_tokens.remove(token)
-                break
-        else:
-            return await self.fatal('incorrect-auth-token')
+            for token in valid_tokens:
+                if hmac.compare_digest(msg['auth_token'], token):
+                    if token in self.server.authorized_tokens:
+                        self.server.authorized_tokens.remove(token)
+                    break
+            else:
+                return await self.fatal('incorrect-auth-token')
 
         await self.send_service_message({'_': 'ready'})
 
@@ -123,9 +124,10 @@ class GatewayWorker(BaseWorker):
 class GatewayServer(BaseServer):
     authorized_tokens: Set[str] = set()
 
-    def __init__(self, *, host, port, ssl=None, auth_token=None):
+    def __init__(self, *, host, port, ssl=None, auth_token=None, disable_auth=False):
         super().__init__(host, port, ssl)
         self.permanent_auth_token = auth_token
+        self.disable_auth = disable_auth
 
     async def start(self):
         if self.permanent_auth_token:
