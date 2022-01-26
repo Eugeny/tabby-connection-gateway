@@ -10,7 +10,7 @@ Once started, you'll just need to enter your gateway URL and a secret token in t
 ## Getting started (Docker)
 
 ```bash
-docker pull ghcr.io/eugeny/tabby-connection-gateway:master
+docker pull ghcr.io/eugeny/tabby-connection-gateway:latest
 docker run -e TABBY_AUTH_TOKEN=secret123 -p 9000:9000 ghcr.io/eugeny/tabby-connection-gateway:master --token-auth --host 0.0.0.0
 ```
 
