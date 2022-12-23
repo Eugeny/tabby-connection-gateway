@@ -13,7 +13,21 @@ Once started, you'll just need to enter your gateway URL and a secret token in t
 docker pull ghcr.io/eugeny/tabby-connection-gateway:latest
 docker run -e TABBY_AUTH_TOKEN=secret123 -p 9000:9000 ghcr.io/eugeny/tabby-connection-gateway:master --token-auth --host 0.0.0.0
 ```
+## Getting started (Docker-compose)
 
+```version: '3.3'
+services:
+    eugeny:
+        command: --token-auth --host 0.0.0.0
+        environment:
+            - TABBY_AUTH_TOKEN=XXX
+        ports:
+            - 9000:9000
+        image: 'ghcr.io/eugeny/tabby-connection-gateway:master'
+```
+
+If using ssl add ```--port 443``` to commnd line & change ports to ```-9000:443```       
+        
 ## Getting started (native)
 
 ```bash
