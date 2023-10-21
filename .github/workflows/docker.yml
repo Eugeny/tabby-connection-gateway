@@ -21,7 +21,7 @@ jobs:
       contents: read
       packages: write
 
-    steps:
+steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       # https://github.com/docker/setup-qemu-action
@@ -33,30 +33,30 @@ jobs:
       # uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226
         uses: docker/setup-buildx-action@v3.0.0
         with:
-      # Buildx version. (eg. v0.3.0)
-      version: # optional
-      # Sets the builder driver to be used
-      driver: # optional, default is docker-container
-      # List of additional driver-specific options. (eg. image=moby/buildkit:master)
-      driver-opts: # optional
-      # Flags for buildkitd daemon
-      buildkitd-flags: # optional, default is --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
-      # Sets up docker build command as an alias to docker buildx build
-      install: # optional, default is false
-      # Switch to this builder instance
-      use: # optional, default is true
-      # Optional address for docker socket or context from `docker context ls`
-      endpoint: # optional
-      # Fixed platforms for current node. If not empty, values take priority over the detected ones
-      platforms: # optional
-      # BuildKit config file
-      config: # optional
-      # Inline BuildKit config
-      config-inline: # optional
-      # Append additional nodes to the builder
-      append: # optional
-      # Cleanup temp files and remove builder at the end of a job
-      cleanup: # optional, default is true
+          # Buildx version. (eg. v0.3.0)
+          version: # optional
+          # Sets the builder driver to be used
+          driver: # optional, default is docker-container
+          # List of additional driver-specific options. (eg. image=moby/buildkit:master)
+          driver-opts: # optional
+          # Flags for buildkitd daemon
+          buildkitd-flags: # optional, default is --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+          # Sets up docker build command as an alias to docker buildx build
+          install: # optional, default is false
+          # Switch to this builder instance
+          use: # optional, default is true
+          # Optional address for docker socket or context from `docker context ls`
+          endpoint: # optional
+          # Fixed platforms for current node. If not empty, values take priority over the detected ones
+          platforms: # optional
+          # BuildKit config file
+          config: # optional
+          # Inline BuildKit config
+          config-inline: # optional
+          # Append additional nodes to the builder
+          append: # optional
+          # Cleanup temp files and remove builder at the end of a job
+          cleanup: # optional, default is true
 
       - name: Log into registry ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
