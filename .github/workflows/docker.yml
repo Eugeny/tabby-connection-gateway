@@ -1,6 +1,8 @@
+ @@ -1,6 +1,8 @@
 name: Docker
 
 on:
+ @@ -61,3 +62,32 @@ jobs:
   schedule:
     - cron: '25 12 * * *'
   push:
@@ -61,3 +63,32 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Deploy ArgoCD
+        uses: cloudposse/github-action-deploy-argocd@0.8.0
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.8.1
+        with:
+          # Set always-auth in npmrc.
+          always-auth: npmrc. # optional, default is false
+          # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
+          node-version: # optional
+          # File containing the version Spec of the version to use.  Examples: .nvmrc, .node-version, .tool-versions.
+          node-version-file: # optional
+          # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
+          architecture: x64 # optional
+          # Set this option if you want the action to check for the latest available version that satisfies the version spec.
+          check-latest: true # optional
+          # Optional registry to set up for auth. Will set the registry in a project level .npmrc and .yarnrc file, and set up auth to read in from env.NODE_AUTH_TOKEN.
+          registry-url: # optional
+          # Optional scope for authenticating against scoped registries. Will fall back to the repository owner when using the GitHub Packages registry (https://npm.pkg.github.com/).
+          scope: # optional
+          # Used to pull node distributions from node-versions. Since there's a default, this is typically not supplied by the user. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
+          token: # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
+          # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
+          cache: pnpm
+
+      - name: NGINX configuration sync
+        uses: nginxinc/nginx-for-azure-deploy-action@v0.1.0
+            
