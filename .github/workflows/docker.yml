@@ -1,13 +1,13 @@
-name: Docker
 
-on:
-  schedule:
-    - cron: '25 12 * * *'
-  push:
+name: Docker
+  on:
+    schedule:
+      - cron: '25 12 * * *'
+    push:
     branches: [ master ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
-  pull_request:
+    pull_request:
     branches: [ master ]
 
 env:
