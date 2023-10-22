@@ -1,9 +1,13 @@
 
 name: Docker
-  on:
+  on: Agentofchaoss-patch-1
     schedule:
       - cron: '25 12 * * *'
-    push:
+    push: dependabot/pip/wheel-0.38.1
+on: Agentofchaoss-patch-1
+  schedule:
+    - cron: '25 12 * * *'
+  push: dependabot/pip/wheel-0.38.1
     branches: [ master ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
