@@ -1,10 +1,12 @@
-
+ @@ -1,10 +1,12 @@
 name: Docker
   on:
+ @@ -1,13 +1,17 @@ 
     schedule:
       - cron: '25 12 * * *'
     push: dependabot/pip/wheel-0.38.1
 on: 
+ @@ -15,6 +16,7 @@ on:
   schedule:
     - cron: '25 12 * * *'
   push: dependabot/pip/wheel-0.38.1
@@ -12,9 +14,11 @@ on:
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
     pull_request:
+    @@ -15,6 +17,7 @@ on:
     branches: [ master ]
 
 env:
+@@ -21,16 +25,42 @@ jobs:
   REGISTRY: ghcr.io
   IMAGE_NAME: eugeny/tabby-connection-gateway
 
