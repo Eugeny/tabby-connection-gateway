@@ -1,5 +1,5 @@
-name: Docker
 
+name: Docker
 on:
   schedule:
     - cron: '25 12 * * *'
