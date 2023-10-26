@@ -16,7 +16,7 @@
         
       db:
       image: mariadb:10.7.1
-       restart: always 
+        restart: always 
         environment:
           MARIADB_DATABASE: tabby 
           MARIADB_USER: user
