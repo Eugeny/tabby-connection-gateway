@@ -45,7 +45,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.ghcr.io }}/${{ env.eugeny/tabby-connection-gateway }}
+          images:${{ env.eugeny/tabby-connection-gateway }}
           tags: |
             type=schedule
             type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
