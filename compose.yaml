@@ -8,4 +8,4 @@ services:
             - 9000:443
             #change to 9000:9000 if not using ssl
         image: 'ghcr.io/eugeny/tabby-connection-gateway:master'
-`
+
