@@ -1,4 +1,4 @@
 bump2version==0.5.11
 wheel==0.38.1
 flake8==3.7.8
-black==21.6b0
+black==24.3.0
